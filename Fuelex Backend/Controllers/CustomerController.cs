@@ -39,5 +39,26 @@ namespace Fuelex_Backend.Controllers
                 return BadRequest($"User is not authenticated");
             }
         }
+
+        [HttpGet("{id}")]
+        public ActionResult<CustomerModel> Get(string id)
+        {
+            var customer = customerService.Get(id);
+
+            if (customer == null)
+            {
+                return NotFound($"Student with Id = {id} not found");
+            }
+
+            return customer;
+        }
+
+
+        [HttpPost("/signup")]
+        public ActionResult<CustomerModel> Post([FromBody] CustomerModel customerModel)
+        {
+            customerService.CreateCustomer(customerModel);
+            return CreatedAtAction(nameof(Get), new {id = customerModel.Id}, customerModel);
+        }
     }
 }

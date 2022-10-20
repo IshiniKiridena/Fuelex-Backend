@@ -6,5 +6,9 @@ namespace Fuelex_Backend.Services.CustomerServices
     public interface ICustomerService
     {
         CustomerModel FindCusomter(Login login);
+
+        CustomerModel CreateCustomer(CustomerModel customer);
+
+        CustomerModel Get(string id);
     }
 }
