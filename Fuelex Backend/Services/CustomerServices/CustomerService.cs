@@ -16,9 +16,21 @@ namespace Fuelex_Backend.Services.Customer
             _customerModel = database.GetCollection<CustomerModel>(settings.CustomerCollectionName);
         }
 
+        public CustomerModel CreateCustomer(CustomerModel customer)
+        {
+            _customerModel.InsertOne(customer);
+            return customer;
+        }
+
         public CustomerModel FindCusomter(Login login)
         {
             return _customerModel.Find(customer => customer.UserName == login.Username).FirstOrDefault();
         }
+
+        public CustomerModel Get(string id)
+        {
+            return _customerModel.Find(customer => customer.Id == id).FirstOrDefault();
+        }
+        
     }
 }
