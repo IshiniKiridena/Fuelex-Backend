@@ -1,9 +1,9 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
-namespace Fuelex_Backend.Models.FuelStation
+namespace Fuelex_Backend.Models.FuelStationModel
 {
     [BsonIgnoreExtraElements]
-    public class FuelStation
+    public class FuelStationModel
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

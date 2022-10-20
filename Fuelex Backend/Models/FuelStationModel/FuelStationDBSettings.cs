@@ -1,4 +1,4 @@
-﻿namespace Fuelex_Backend.Models.FuelStation
+﻿namespace Fuelex_Backend.Models.FuelStationModel
 {
     public class FuelStationDBSettings : IFuelStationDBSettings
     {
