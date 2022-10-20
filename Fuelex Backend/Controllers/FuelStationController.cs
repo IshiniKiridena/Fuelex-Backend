@@ -37,5 +37,11 @@ namespace Fuelex_Backend.Controllers
                 return BadRequest($"User is not authenticated");
             }
         }
+
+        [HttpGet]
+        public ActionResult <List<FuelStationModel>> GetFuelStation()
+        {
+            return fuelStationService.GetFuelStation();
+        }
     }
 }

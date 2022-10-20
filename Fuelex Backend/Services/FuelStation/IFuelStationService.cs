@@ -6,5 +6,7 @@ namespace Fuelex_Backend.Services.FuelStation
     public interface IFuelStationService
     {
         FuelStationModel OwnerLogin(Login login);
+
+        List <FuelStationModel> GetFuelStation();
     }
 }
