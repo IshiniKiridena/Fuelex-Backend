@@ -1,10 +1,10 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
 
-namespace Fuelex_Backend.Models.Customer
+namespace Fuelex_Backend.Models.CustomerModel
 {
     [BsonIgnoreExtraElements]
-    public class Customer
+    public class CustomerModel
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
