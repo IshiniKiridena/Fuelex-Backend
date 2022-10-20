@@ -3,6 +3,7 @@ using Fuelex_Backend.Models.FuelStation;
 using Fuelex_Backend.Models.FuelType;
 using Fuelex_Backend.Models.Queue;
 using Fuelex_Backend.Services.Customer;
+using Fuelex_Backend.Services.CustomerServices;
 using Fuelex_Backend.Services.FuelStation;
 using Fuelex_Backend.Services.FuelType;
 using Fuelex_Backend.Services.Queue;
