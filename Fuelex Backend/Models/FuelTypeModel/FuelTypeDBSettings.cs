@@ -1,4 +1,4 @@
-﻿namespace Fuelex_Backend.Models.FuelType
+﻿namespace Fuelex_Backend.Models.FuelTypeModel
 {
     public class FuelTypeDBSettings : IFuelTypeDBSetttings
     {
