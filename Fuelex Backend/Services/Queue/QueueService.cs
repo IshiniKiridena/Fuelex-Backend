@@ -18,6 +18,10 @@ namespace Fuelex_Backend.Services.Queue
             return _queueModel.Find(queue => queue.Location == location && queue.VehicleType == vehicleType && queue.FuelType == fuelType).FirstOrDefault();
         }
 
+        public void UpdateCount(string location, string vehicleType, string fuelType, QueueModel _queue)
+        {
+           _queueModel.ReplaceOne(queue => queue.Location == location && queue.VehicleType == vehicleType && queue.FuelType == fuelType, _queue);
+        }
 
     }
 }

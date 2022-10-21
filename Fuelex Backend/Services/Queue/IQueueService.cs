@@ -5,5 +5,7 @@ namespace Fuelex_Backend.Services.Queue
     public interface IQueueService
     {
         QueueModel GetAllCounts(string location, string vehicleType, string fuelType);
+
+        void UpdateCount(string location, string vehicleType, string fuelType, QueueModel queue);
     }
 }
