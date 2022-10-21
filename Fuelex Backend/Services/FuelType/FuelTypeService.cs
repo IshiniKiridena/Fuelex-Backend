@@ -8,35 +8,27 @@ namespace Fuelex_Backend.Services.FuelType
 
         private readonly IMongoCollection<FuelTypeModel> _fuelTypeModel;
 
-        public FuelTypeModel Get(string id)
-        {
-            return _fuelTypeModel.Find(fuelTypeModel => fuelTypeModel.Id == id).FirstOrDefault();
-        }
-
         public FuelTypeService(IFuelTypeDBSetttings settings, IMongoClient mongoClient)
         {
             var database = mongoClient.GetDatabase(settings.DatabaseName);
             _fuelTypeModel = database.GetCollection<FuelTypeModel>(settings.FuelTypeCollectionName);
         }
 
-        public List<FuelTypeModel> GetFuelType()
+
+        public FuelTypeModel Get(string type, string location)
         {
-            return _fuelTypeModel.Find(fuelTypeModel=>true).ToList();
+            return _fuelTypeModel.Find(fuelType => fuelType.Type == type && fuelType.Location == location).FirstOrDefault();
         }
 
-        public void UpdateFuelArrivalTime(string id, FuelTypeModel fuelTypeModel)
+        public List<FuelTypeModel> GetFuelType(string location)
         {
-            _fuelTypeModel.ReplaceOne(fuelTypeModel => fuelTypeModel.Id == id, fuelTypeModel);
+            return _fuelTypeModel.Find(fuelTypeModel=> fuelTypeModel.Location == location).ToList();
         }
 
-        public void UpdateFuelFinishTime(string id, FuelTypeModel fuelTypeModel)
+        public void UpdateFuel(string type, string location, FuelTypeModel fuelTypeModel)
         {
-            _fuelTypeModel.ReplaceOne(fuelTypeModel => fuelTypeModel.Id == id, fuelTypeModel);
+            _fuelTypeModel.ReplaceOne(fuelTypeModel => fuelTypeModel.Location == location && fuelTypeModel.Type == type, fuelTypeModel);
         }
 
-        public void UpdateFuelStatus(string id, FuelTypeModel fuelTypeModel)
-        {
-            _fuelTypeModel.ReplaceOne(fuelTypeModel => fuelTypeModel.Id == id, fuelTypeModel);
-        }
     }
 }
