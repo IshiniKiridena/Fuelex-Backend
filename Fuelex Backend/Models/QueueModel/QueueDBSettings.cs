@@ -1,4 +1,4 @@
-﻿namespace Fuelex_Backend.Models.Queue
+﻿namespace Fuelex_Backend.Models.QueueModel
 {
     public class QueueDBSettings : IQueueDBSettings
     {

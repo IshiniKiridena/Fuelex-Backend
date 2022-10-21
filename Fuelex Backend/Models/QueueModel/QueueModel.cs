@@ -1,9 +1,9 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
-namespace Fuelex_Backend.Models.Queue
+namespace Fuelex_Backend.Models.QueueModel
 {
     [BsonIgnoreExtraElements]
-    public class Queue
+    public class QueueModel
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -14,6 +14,9 @@ namespace Fuelex_Backend.Models.Queue
 
         [BsonElement("vehicleType")]
         public string VehicleType { set; get; } = string.Empty;
+
+        [BsonElement("fuelType")]
+        public string FuelType { set; get; } = string.Empty;
 
         [BsonElement("currentCount")]
         public int CurrentCount { set; get; }
