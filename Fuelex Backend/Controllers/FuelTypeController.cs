@@ -15,49 +15,31 @@ namespace Fuelex_Backend.Controllers
             this.fuelTypeService = fuelTypeService;
         }
 
-        [HttpGet]
-        public ActionResult<List<FuelTypeModel>> GetFuelType()
+        [HttpGet("{location}")]
+        public ActionResult<List<FuelTypeModel>> GetFuelType(string location)
         {
-            return fuelTypeService.GetFuelType();
+            var fueltype = fuelTypeService.GetFuelType(location);
+
+            if(fueltype == null)
+            {
+                return NotFound();
+            }
+
+            return fueltype;
         }
 
-        [HttpPut("{id}")]
-        public ActionResult Put(string id, [FromBody] FuelTypeModel fuelTypeModel)
+        [HttpPut("{type}/{location}")]
+        public ActionResult Put(string type, string location, [FromBody] FuelTypeModel fuelTypeModel)
         {
-            var existingfueltype = fuelTypeService.Get(id);
+            var existingfueltype = fuelTypeService.Get(type, location);
 
             if (existingfueltype == null)
             {
-                return NotFound($"fuelTypeModel with id = {id} not found");
+                return NotFound($"fuelTypeModel with type = {type} not found");
             }
-            fuelTypeService.UpdateFuelArrivalTime(id, fuelTypeModel);
+            fuelTypeService.UpdateFuel(type, location, fuelTypeModel);
             return NoContent();
         }
 
-        [HttpPut("/finish/{id}")]
-        public ActionResult Putf(string id, [FromBody] FuelTypeModel fuelTypeModel)
-        {
-            var existingfueltype = fuelTypeService.Get(id);
-
-            if (existingfueltype == null)
-            {
-                return NotFound($"fuelTypeModel with id = {id} not found");
-            }
-            fuelTypeService.UpdateFuelFinishTime(id, fuelTypeModel);
-            return NoContent();
-        }
-
-        [HttpPut("/status/{id}")]
-        public ActionResult Puts(string id, [FromBody] FuelTypeModel fuelTypeModel)
-        {
-            var existingfueltype = fuelTypeService.Get(id);
-
-            if (existingfueltype == null)
-            {
-                return NotFound($"fuelTypeModel with id = {id} not found");
-            }
-            fuelTypeService.UpdateFuelStatus(id, fuelTypeModel);
-            return NoContent();
-        }
     }
 }

@@ -4,14 +4,11 @@ namespace Fuelex_Backend.Services.FuelType
 {
     public interface IFuelTypeService
     {
-        FuelTypeModel Get(string id);
+        FuelTypeModel Get(string type, string location);
 
-        List<FuelTypeModel> GetFuelType();
+        List<FuelTypeModel> GetFuelType(string location);
 
-        void UpdateFuelArrivalTime(string id,FuelTypeModel fuelTypeModel);
+        void UpdateFuel(string type, string location, FuelTypeModel fuelTypeModel);
 
-        void UpdateFuelFinishTime(string id, FuelTypeModel fuelTypeModel);
-
-        void UpdateFuelStatus(string id, FuelTypeModel fuelTypeModel);
     }
 }
