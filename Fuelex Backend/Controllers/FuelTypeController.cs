@@ -10,11 +10,13 @@ namespace Fuelex_Backend.Controllers
     {
         private readonly IFuelTypeService fuelTypeService;
 
+        //Constructor
         public FuelTypeController(IFuelTypeService fuelTypeService)
         {
             this.fuelTypeService = fuelTypeService;
         }
 
+        //GET api for getting fuel types
         [HttpGet("{location}")]
         public ActionResult<List<FuelTypeModel>> GetFuelType(string location)
         {
@@ -28,6 +30,7 @@ namespace Fuelex_Backend.Controllers
             return fueltype;
         }
 
+        //PUT api to update fuel status
         [HttpPut("{type}/{location}")]
         public ActionResult Put(string type, string location, [FromBody] FuelTypeModel fuelTypeModel)
         {

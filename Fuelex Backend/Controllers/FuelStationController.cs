@@ -12,11 +12,13 @@ namespace Fuelex_Backend.Controllers
     {
         private readonly IFuelStationService fuelStationService;
 
+        //Constructor
         public FuelStationController(IFuelStationService fuelStationService)
         {
             this.fuelStationService = fuelStationService;
         }
 
+        //POST api for owner login
         [HttpPost]
         public ActionResult<FuelStationModel> OwnerLogin([FromBody]Login login)
         {
@@ -38,6 +40,7 @@ namespace Fuelex_Backend.Controllers
             }
         }
 
+        //GET api to get all fuel stations
         [HttpGet]
         public ActionResult <List<FuelStationModel>> GetFuelStation()
         {

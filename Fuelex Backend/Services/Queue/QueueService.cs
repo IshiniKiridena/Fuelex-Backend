@@ -13,11 +13,13 @@ namespace Fuelex_Backend.Services.Queue
             _queueModel = database.GetCollection<QueueModel>(settings.QueueCollectionName);
         }
 
+        //find number of vehicles
         public QueueModel GetAllCounts(string location, string vehicleType, string fuelType)
         {
             return _queueModel.Find(queue => queue.Location == location && queue.VehicleType == vehicleType && queue.FuelType == fuelType).FirstOrDefault();
         }
 
+        //update queue status
         public void UpdateCount(string location, string vehicleType, string fuelType, QueueModel _queue)
         {
            _queueModel.ReplaceOne(queue => queue.Location == location && queue.VehicleType == vehicleType && queue.FuelType == fuelType, _queue);

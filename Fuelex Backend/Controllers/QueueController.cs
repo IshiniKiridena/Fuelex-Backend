@@ -12,11 +12,13 @@ namespace Fuelex_Backend.Controllers
     {
         private readonly IQueueService queueService;
 
+        //Constructor
         public QueueController(IQueueService queueService)
         {
             this.queueService = queueService;
         }
 
+        //GET api to get the queue count
         [HttpGet("{location}/{vehicleType}/{fuelType}")]
         public ActionResult<QueueModel> GetCounts(string location, string vehicleType, string fuelType)
         {
@@ -30,6 +32,7 @@ namespace Fuelex_Backend.Controllers
             return exisitingQueue;
         }
 
+        //PUT api to update the queue count
         [HttpPut("{location}/{vehicleType}/{fuelType}")]
         public ActionResult UpdateCounts(string location, string vehicleType, string fuelType, [FromBody] CountModel countModel)
         {
