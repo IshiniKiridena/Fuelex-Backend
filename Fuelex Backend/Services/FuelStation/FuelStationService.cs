@@ -15,11 +15,13 @@ namespace Fuelex_Backend.Services.FuelStation
             _fuelStationModel = database.GetCollection<FuelStationModel>(settings.FuelStationCollectionName);
         }
 
+        //get fuel stations
         public List<FuelStationModel> GetFuelStation()
         {
             return _fuelStationModel.Find(fuelStationModel=>true).ToList();
         }
 
+        //fuel station owner login
         public FuelStationModel OwnerLogin(Login login)
         {
             return _fuelStationModel.Find(owner => owner.UserName == login.Username).FirstOrDefault();

@@ -19,7 +19,7 @@ namespace Fuelex_Backend.Controllers
             this.customerService = customerService;
         }
 
-        //GET api/<Customer controller>/username
+        //POST api for login
         [HttpPost]
         public ActionResult<CustomerModel> CustomerLogin([FromBody]Login login)
         {
@@ -40,6 +40,7 @@ namespace Fuelex_Backend.Controllers
             }
         }
 
+        //GET api to get customer
         [HttpGet("{id}")]
         public ActionResult<CustomerModel> Get(string id)
         {
@@ -53,7 +54,7 @@ namespace Fuelex_Backend.Controllers
             return customer;
         }
 
-
+        //POST api for signup
         [HttpPost("/signup")]
         public ActionResult<CustomerModel> Post([FromBody] CustomerModel customerModel)
         {
