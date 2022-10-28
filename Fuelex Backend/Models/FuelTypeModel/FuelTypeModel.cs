@@ -16,10 +16,10 @@ namespace Fuelex_Backend.Models.FuelTypeModel
         public string Type { set; get; } = string.Empty;
 
         [BsonElement("status")]
-        public bool Status { set; get; }
+        public string Status { set; get; }
 
         [BsonElement("quantity")]
-        public int Quantity { set; get; }
+        public string Quantity { set; get; }
 
         [BsonElement("arrivalTime")]
         public string ArrivalTime { set; get; } = string.Empty;

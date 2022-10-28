@@ -23,7 +23,13 @@ namespace Fuelex_Backend.Services.FuelType
         //get fuel types
         public List<FuelTypeModel> GetFuelType(string location)
         {
-            return _fuelTypeModel.Find(fuelTypeModel=> fuelTypeModel.Location == location).ToList();
+            return _fuelTypeModel.Find(fuelTypeModel => fuelTypeModel.Location == location).ToList();
+        }
+
+        //get fuel types
+        public FuelTypeModel GetFuel(string location, string type)
+        {
+            return _fuelTypeModel.Find(fuelTypeModel=> fuelTypeModel.Location == location && fuelTypeModel.Type == type).FirstOrDefault();
         }
 
         //update fuel status of station

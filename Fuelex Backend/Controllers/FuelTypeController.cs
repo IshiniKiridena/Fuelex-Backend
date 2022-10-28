@@ -22,6 +22,20 @@ namespace Fuelex_Backend.Controllers
         {
             var fueltype = fuelTypeService.GetFuelType(location);
 
+            if (fueltype == null)
+            {
+                return NotFound();
+            }
+
+            return fueltype;
+        }
+
+        //GET api for getting fuel types
+        [HttpGet("{location}/{type}")]
+        public ActionResult<FuelTypeModel> GetFuel(string location, string type)
+        {
+            var fueltype = fuelTypeService.GetFuel(location, type);
+
             if(fueltype == null)
             {
                 return NotFound();
@@ -41,7 +55,7 @@ namespace Fuelex_Backend.Controllers
                 return NotFound($"fuelTypeModel with type = {type} not found");
             }
             fuelTypeService.UpdateFuel(type, location, fuelTypeModel);
-            return NoContent();
+            return Ok();
         }
 
     }
