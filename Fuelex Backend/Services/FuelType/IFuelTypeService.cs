@@ -8,6 +8,8 @@ namespace Fuelex_Backend.Services.FuelType
 
         List<FuelTypeModel> GetFuelType(string location);
 
+        FuelTypeModel GetFuel(string location, string type);
+
         void UpdateFuel(string type, string location, FuelTypeModel fuelTypeModel);
 
     }
